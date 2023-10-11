@@ -1,9 +1,11 @@
 package com.example.agenda.repositories;
 
+import com.example.agenda.enums.Horario;
 import com.example.agenda.models.Entities.Agenda;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.Date;
 import java.util.List;
 
 public interface AgendaRepository extends JpaRepository<Agenda, Long> {
@@ -26,6 +28,9 @@ public interface AgendaRepository extends JpaRepository<Agenda, Long> {
              AND s.medico_id = :medicoId
             """)
     Agenda verificaMesmoHorario(String inicio, String fim, String dataConsulta, Long medicoId);
+    
+
+
 }
 
 

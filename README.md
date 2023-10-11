@@ -36,7 +36,7 @@ Agenda
 - Maven para gerenciamento das dependências do projeto.
 - Flyway para gerenciamento dos migrations do projeto.
 - Deploy da aplicação no Railway.
-- 
+
 # Regras de Negócio
 
 - A aplicação deve permitir o agendamento de um horário para todo o ano das 8 às 17 horas.

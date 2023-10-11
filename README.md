@@ -52,3 +52,4 @@ Agenda
 - Jhonny Azevedo
 - Eduardo Orthmann
 - Clovis Pilger Junior
+- Tiago Martins Speckart

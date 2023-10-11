@@ -1,10 +1,10 @@
-package com.example.agenda.services.interfaces;
+package com.example.agenda.services;
 
 import com.example.agenda.models.DTO.AgendaDTO;
 
 import java.util.List;
 
-public interface IAgendaService {
+public interface AgendaServiceImpl {
 
     Long criarUmHorario(AgendaDTO agendaDTO) throws Exception;
     Long atualizarHorario(AgendaDTO agenda) throws Exception;

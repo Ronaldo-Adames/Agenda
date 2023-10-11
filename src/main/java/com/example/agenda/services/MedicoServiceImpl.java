@@ -1,10 +1,10 @@
-package com.example.agenda.services.interfaces;
+package com.example.agenda.services;
 
 import com.example.agenda.models.DTO.MedicoDTO;
 
 import java.util.List;
 
-public interface IMedicoService {
+public interface MedicoServiceImpl {
     Long adicionarMedico(MedicoDTO medicoDTO) throws Exception;
 
     void deletarMedico(Long id);

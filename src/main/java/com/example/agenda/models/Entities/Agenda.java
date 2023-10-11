@@ -1,11 +1,18 @@
 package com.example.agenda.models.Entities;
 
 import com.example.agenda.enums.Horario;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
 @Entity
+@Data // anotação para getters e setters equals e hashCode, toString
+@NoArgsConstructor  // construtor sem argumentos
+@AllArgsConstructor // construtor com todos os argumentos
 @Table(name = "tb_agenda")
 public class Agenda {
 
@@ -23,6 +30,7 @@ public class Agenda {
     @Column(nullable = false)
     private String tipoConsulta;
 
+    @JsonFormat(pattern = "dd/MM/YYYY")
     @Column(nullable = false)
     private Date dataConsulta;
 
@@ -33,90 +41,6 @@ public class Agenda {
     @Column(nullable = false)
     @Enumerated(value = EnumType.STRING)
     private Horario fim;
-
-
-    public Agenda() {
-
-    }
-
-    public Agenda(Long id, Medico medicoId, String pacienteNome, String tipoConsulta, Date dataConsulta, Horario inicio, Horario fim) {
-        this.id = id;
-        this.medicoId = medicoId;
-        this.pacienteNome = pacienteNome;
-        this.tipoConsulta = tipoConsulta;
-        this.dataConsulta = dataConsulta;
-        this.inicio = inicio;
-        this.fim = fim;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Medico getMedicoId() {
-        return medicoId;
-    }
-
-    public void setMedicoId(Medico medicoId) {
-        this.medicoId = medicoId;
-    }
-
-    public String getPacienteNome() {
-        return pacienteNome;
-    }
-
-    public void setPacienteNome(String pacienteNome) {
-        this.pacienteNome = pacienteNome;
-    }
-
-    public String getTipoConsulta() {
-        return tipoConsulta;
-    }
-
-    public void setTipoConsulta(String tipoConsulta) {
-        this.tipoConsulta = tipoConsulta;
-    }
-
-    public Date getDataConsulta() {
-        return dataConsulta;
-    }
-
-    public void setDataConsulta(Date dataConsulta) {
-        this.dataConsulta = dataConsulta;
-    }
-
-    public Horario getInicio() {
-        return inicio;
-    }
-
-    public void setInicio(Horario inicio) {
-        this.inicio = inicio;
-    }
-
-    public Horario getFim() {
-        return fim;
-    }
-
-    public void setFim(Horario fim) {
-        this.fim = fim;
-    }
-
-    @Override
-    public String toString() {
-        return "Agenda{" +
-                "id=" + id +
-                ", medicoId=" + medicoId +
-                ", pacienteNome='" + pacienteNome + '\'' +
-                ", tipoConsulta='" + tipoConsulta + '\'' +
-                ", dataConsulta=" + dataConsulta +
-                ", inicio=" + inicio +
-                ", fim=" + fim +
-                '}';
-    }
 }
 
 

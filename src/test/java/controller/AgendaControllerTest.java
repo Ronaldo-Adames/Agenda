@@ -2,7 +2,7 @@ package controller;
 
 import com.example.agenda.controllers.AgendaController;
 import com.example.agenda.models.DTO.AgendaDTO;
-import com.example.agenda.services.interfaces.AgendaService;
+import com.example.agenda.services.AgendaService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

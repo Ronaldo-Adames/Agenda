@@ -1,4 +1,4 @@
-package com.example.agenda.services.interfaces;
+package com.example.agenda.services;
 
 import com.example.agenda.consts.ExceptionConsts;
 import com.example.agenda.models.DTO.AgendaDTO;
@@ -11,7 +11,7 @@ import com.example.agenda.repositories.AgendaRepository;
 import java.util.List;
 
 @Service
-public class AgendaService implements IAgendaService {
+public class AgendaService implements AgendaServiceImpl {
 
     @Autowired
     AgendaRepository repository;
@@ -60,7 +60,7 @@ public class AgendaService implements IAgendaService {
 
             return mapper.map(repository.procurarUmHorario(pacienteNome, medicoId), AgendaDTO.class);
         } catch (Exception e) {
-            throw new Exception(ExceptionConsts.ERRO_DE_INSERCAO_DE_AGENDAMENTO);
+            throw new Exception(ExceptionConsts.ERRO_AO_ENCONTRAR_UM_HORARIO);
         }
 
     }
@@ -74,12 +74,16 @@ public class AgendaService implements IAgendaService {
             return created.getId();
 
         } catch (Exception e) {
-            throw new Exception(ExceptionConsts.ERRO_DE_INSERCAO_DE_AGENDAMENTO);
+            throw new Exception(ExceptionConsts.ERROR_AO_INSERIR_HORARIO);
         }
     }
 
     public AgendaDTO procurarUmHorarioById(Long id) {
         return mapper.map(repository.findById(id), AgendaDTO.class);
+    }
+
+    public List<Agenda> listaAgenda() {
+        return repository.findAll();
     }
 }
 

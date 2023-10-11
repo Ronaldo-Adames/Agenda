@@ -1,4 +1,4 @@
-package com.example.agenda.services.interfaces;
+package com.example.agenda.services;
 
 import com.example.agenda.consts.ExceptionConsts;
 import com.example.agenda.models.DTO.MedicoDTO;
@@ -11,7 +11,7 @@ import com.example.agenda.repositories.MedicoRepository;
 import java.util.List;
 
 @Service
-public class MedicoService implements IMedicoService {
+public class MedicoService implements MedicoServiceImpl {
 
     @Autowired
     MedicoRepository repository;
@@ -24,12 +24,12 @@ public class MedicoService implements IMedicoService {
         try {
             //  Verificar se já existe um médico com o mesmo nome cadastrado
             if (repository.findByNome(medicoDTO.getNome()) != null) {
-                throw new Exception(ExceptionConsts.ERRO_AO_INSERIR_NOME_DO_MEDICO);
+                throw new Exception(ExceptionConsts.MEDICO_ERRO_AO_INSERIR_NOME);
             }
 
             return salvar(medicoDTO);
         } catch (Exception e) {
-            throw new Exception(ExceptionConsts.ERRO_AO_INSERIR_NOME_DO_MEDICO);
+            throw new Exception(ExceptionConsts.MEDICO_ERRO_AO_INSERIR_NOME);
         }
     }
 
@@ -58,12 +58,12 @@ public class MedicoService implements IMedicoService {
         try {
             MedicoDTO procurarMedico = mapper.map(repository.findByNome(name), MedicoDTO.class);
             if (procurarMedico == null) {
-                throw new Exception(ExceptionConsts.ERRO_AO_INSERIR_NOME_DO_MEDICO);
+                throw new Exception(ExceptionConsts.MEDICO_ERRO_AO_INSERIR_NOME);
             }
 
             return procurarMedico;
         } catch (Exception e) {
-            throw new Exception(ExceptionConsts.ERRO_AO_INSERIR_NOME_DO_MEDICO);
+            throw new Exception(ExceptionConsts.MEDICO_ERRO_AO_INSERIR_NOME);
         }
     }
 
@@ -82,7 +82,7 @@ public class MedicoService implements IMedicoService {
             Medico adicionar = repository.save(medico);
             return adicionar.getId();
         } catch (Exception e) {
-            throw new Exception(ExceptionConsts.ERRO_AO_INSERIR_NOME_DO_MEDICO);
+            throw new Exception(ExceptionConsts.MEDICO_ERRO_AO_INSERIR_NOME);
         }
     }
 }

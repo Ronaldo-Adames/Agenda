@@ -1,7 +1,7 @@
 package com.example.agenda.controllers;
 
 import com.example.agenda.models.DTO.MedicoDTO;
-import com.example.agenda.services.interfaces.MedicoService;
+import com.example.agenda.services.MedicoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

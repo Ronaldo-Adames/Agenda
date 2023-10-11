@@ -1,7 +1,8 @@
 package com.example.agenda.controllers;
 
 import com.example.agenda.models.DTO.AgendaDTO;
-import com.example.agenda.services.interfaces.AgendaService;
+import com.example.agenda.models.Entities.Agenda;
+import com.example.agenda.services.AgendaService;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,6 +59,11 @@ public class AgendaController {
         return agendaService.listaHorarios(dataConsulta, id);
     }
 
+    @GetMapping("/list-all")
+    public List<Agenda> listaAgenda() {
+
+        return agendaService.listaAgenda();
+    }
     @GetMapping
     public AgendaDTO procurarUmHorario(@RequestParam(name = "pacienteNome") String pacienteNome,
                                            @RequestParam(name = "medicoId") Long medicoId) throws Exception {

@@ -51,3 +51,4 @@ Agenda
 - Professor Marcio Michelluzzi
 - Jhonny Azevedo
 - Eduardo Orthmann
+- Clovis Pilger Junior

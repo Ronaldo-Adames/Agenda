@@ -3,7 +3,7 @@ package services;
 import com.example.agenda.models.DTO.AgendaDTO;
 import com.example.agenda.models.Entities.Agenda;
 import com.example.agenda.repositories.AgendaRepository;
-import com.example.agenda.services.interfaces.AgendaService;
+import com.example.agenda.services.AgendaService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

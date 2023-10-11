@@ -1,10 +1,9 @@
 package services;
 
-import com.example.agenda.consts.ExceptionConsts;
 import com.example.agenda.models.DTO.MedicoDTO;
 import com.example.agenda.models.Entities.Medico;
 import com.example.agenda.repositories.MedicoRepository;
-import com.example.agenda.services.interfaces.MedicoService;
+import com.example.agenda.services.MedicoService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;

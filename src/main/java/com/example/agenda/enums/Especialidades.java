@@ -2,7 +2,7 @@ package com.example.agenda.enums;
 
 public enum Especialidades {
 
-        ClinicoGeral("ClinicoGeral"),
+        ClinicoGeral("Clinico Geral"),
         Pediatra("Pediatra");
 
         private String especialidade="";

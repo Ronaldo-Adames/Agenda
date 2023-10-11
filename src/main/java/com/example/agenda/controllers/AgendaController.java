@@ -19,7 +19,7 @@ public class AgendaController {
     AgendaService agendaService;
 
     @PostMapping
-    public ResponseEntity<Object> criarUmHorario(@Valid @RequestBody AgendaDTO agendaDTO) throws Exception {
+    public ResponseEntity<Object> marcarUmHorario(@Valid @RequestBody AgendaDTO agendaDTO) throws Exception {
 
         try {
             return ResponseEntity.ok(agendaService.criarUmHorario(agendaDTO));
@@ -60,8 +60,7 @@ public class AgendaController {
     }
 
     @GetMapping("/list-all")
-    public List<Agenda> listaAgenda() {
-
+    public List<AgendaDTO> listaAgenda() {
         return agendaService.listaAgenda();
     }
     @GetMapping

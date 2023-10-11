@@ -36,7 +36,7 @@ public class AgendaControllerTest {
         AgendaDTO agendaDTO = new AgendaDTO();
         when(agendaService.criarUmHorario(agendaDTO)).thenReturn(1l);
 
-        ResponseEntity<Object> response = agendaController.criarUmHorario(agendaDTO);
+        ResponseEntity<Object> response = agendaController.marcarUmHorario(agendaDTO);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
     }

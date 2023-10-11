@@ -1,5 +1,5 @@
 create table tb_agenda (
-    data_consulta timestamp(6) not null,
+    data_consulta timestamp(6) WITHOUT TIME ZONE NOT NULL,
     id bigserial not null,
     medico_id bigint,
     fim varchar(255) not null check (fim in ('H_8_00','H_9_00','H_10_00','H_11_00','H_12_00','H_13_00','H_14_00','H_15_00','H_16_00','H_17_00')),

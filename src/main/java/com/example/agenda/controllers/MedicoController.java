@@ -1,5 +1,6 @@
 package com.example.agenda.controllers;
 
+import com.example.agenda.consts.ExceptionConsts;
 import com.example.agenda.models.DTO.MedicoDTO;
 import com.example.agenda.services.MedicoService;
 import jakarta.validation.Valid;
@@ -63,7 +64,7 @@ public class MedicoController {
         try {
             return medicoService.procurarUmMedico(medicoNome);
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException(ExceptionConsts.MEDICO_ERRO_AO_PROCURAR);
         }
     }
 }

@@ -3,6 +3,7 @@ package com.example.agenda.services;
 import com.example.agenda.consts.ExceptionConsts;
 import com.example.agenda.models.DTO.MedicoDTO;
 import com.example.agenda.models.Entities.Medico;
+import com.example.agenda.services.impl.MedicoServiceImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -46,10 +47,8 @@ public class MedicoService implements MedicoServiceImpl {
 
     @Override
     public List<MedicoDTO> listarMedicos() {
-        List<MedicoDTO> medicos = repository.findAll().stream()
+        return repository.findAll().stream()
                 .map(e -> mapper.map(e, MedicoDTO.class)).toList();
-
-        return medicos;
 
     }
 
@@ -58,12 +57,12 @@ public class MedicoService implements MedicoServiceImpl {
         try {
             MedicoDTO procurarMedico = mapper.map(repository.findByNome(name), MedicoDTO.class);
             if (procurarMedico == null) {
-                throw new Exception(ExceptionConsts.MEDICO_ERRO_AO_INSERIR_NOME);
+                throw new Exception(ExceptionConsts.MEDICO_ERRO_AO_PROCURAR);
             }
 
             return procurarMedico;
         } catch (Exception e) {
-            throw new Exception(ExceptionConsts.MEDICO_ERRO_AO_INSERIR_NOME);
+            throw new RuntimeException(ExceptionConsts.MEDICO_ERRO_AO_PROCURAR);
         }
     }
 
@@ -75,7 +74,6 @@ public class MedicoService implements MedicoServiceImpl {
 
     public Long salvar(MedicoDTO medicoDTO) throws Exception {
         Boolean tenhaMesmoNome = false;
-
         try {
 
             Medico medico = mapper.map(medicoDTO, Medico.class);

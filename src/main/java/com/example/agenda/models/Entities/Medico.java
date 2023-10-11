@@ -25,7 +25,7 @@ public class Medico {
     @Enumerated(value = EnumType.STRING)
     private Especialidades especialidade;
 
-    @OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
     private List<Agenda> listaDeHorario;
 
     @Column(nullable = false)

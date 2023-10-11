@@ -7,6 +7,7 @@ import lombok.Data;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 public class MedicoDTO implements Serializable {
@@ -21,6 +22,8 @@ public class MedicoDTO implements Serializable {
 
     @NotNull(message = "Por favor selecione a especialidade.")
     private  String especialidade;
+
+    private List<AgendaDTO> listaDeHorario;
 
     private Boolean isActive = true;
 }

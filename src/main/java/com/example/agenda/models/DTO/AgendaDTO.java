@@ -1,6 +1,7 @@
 package com.example.agenda.models.DTO;
 
 import com.example.agenda.enums.Horario;
+import com.example.agenda.models.Entities.Medico;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -18,7 +19,7 @@ public class AgendaDTO implements Serializable {
     private Long id;
 
     @NotNull
-    private Long medicoId;
+    private Medico medicoId;
 
     @NotBlank(message = "O campo nome do Paciente não pode estar em branco.")
     @NotEmpty(message = "O campo nome do Paciente não pode estar vazio.")

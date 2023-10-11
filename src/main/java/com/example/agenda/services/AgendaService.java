@@ -3,6 +3,9 @@ package com.example.agenda.services;
 import com.example.agenda.consts.ExceptionConsts;
 import com.example.agenda.models.DTO.AgendaDTO;
 import com.example.agenda.models.Entities.Agenda;
+import com.example.agenda.models.Entities.Medico;
+import com.example.agenda.repositories.MedicoRepository;
+import com.example.agenda.services.impl.AgendaServiceImpl;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,13 +18,14 @@ public class AgendaService implements AgendaServiceImpl {
 
     @Autowired
     AgendaRepository repository;
+
     @Autowired
     ModelMapper mapper;
 
     @Override
     public Long criarUmHorario(AgendaDTO agendaDTO) throws Exception {
         // Verificando se já existe um cliente agendado neste horário
-        Agenda existeAgenda = repository.verificaMesmoHorario(agendaDTO.getInicio().toString(), agendaDTO.getFim().toString(), agendaDTO.getDataConsulta().toString(), agendaDTO.getMedicoId());
+        Agenda existeAgenda = repository.verificaMesmoHorario(agendaDTO.getInicio().toString(), agendaDTO.getFim().toString(), agendaDTO.getDataConsulta().toString(), agendaDTO.getMedicoId().getId());
 
         try {
             if (existeAgenda != null) {
@@ -48,16 +52,14 @@ public class AgendaService implements AgendaServiceImpl {
 
     @Override
     public List<AgendaDTO> listaHorarios(String dataConsulta, Long medicoId) {
-        List<AgendaDTO> horarios = repository.listaConsultas(dataConsulta, medicoId).stream().map(s -> mapper
+        return repository.listaConsultas(dataConsulta, medicoId).stream().map(s -> mapper
                 .map(s, AgendaDTO.class)).toList();
-
-        return horarios;
     }
 
     @Override
     public AgendaDTO procurarUmHorario(String pacienteNome, Long medicoId) throws Exception {
-        try {
 
+        try {
             return mapper.map(repository.procurarUmHorario(pacienteNome, medicoId), AgendaDTO.class);
         } catch (Exception e) {
             throw new Exception(ExceptionConsts.ERRO_AO_ENCONTRAR_UM_HORARIO);
@@ -82,8 +84,8 @@ public class AgendaService implements AgendaServiceImpl {
         return mapper.map(repository.findById(id), AgendaDTO.class);
     }
 
-    public List<Agenda> listaAgenda() {
-        return repository.findAll();
+    public List<AgendaDTO> listaAgenda() {
+        return repository.findAll().stream().map(e -> mapper.map(e, AgendaDTO.class)).toList();
     }
 }
 
